@@ -1,6 +1,6 @@
-from typing import *
 from actions import *
 from data import *
+from typing import List, Dict, Any
 
 # This module handles the menu and user interaction for the student management system.
 
