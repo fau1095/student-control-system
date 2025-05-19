@@ -21,7 +21,7 @@ def add_student(students):
 
     section = input("Section: ")
     spanish = validate_grade("Spanish grade: ")
-    english = validate_grade("English grad: ")
+    english = validate_grade("English grade: ")
     social = validate_grade("Social Studies grade: ")
     science = validate_grade("Science grade: ")
 
