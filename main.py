@@ -1,7 +1,9 @@
 from menu import show_menu
 from typing import List, Dict, Any
 
-students: List[Dict[str, Any]] = []  # Define students list as list of dicts
+def main():
+    students: List[Dict[str, Any]] = []  # Local variable for students
+    show_menu(students)  # Pass students as argument
 
 if __name__ == "__main__":
-    show_menu(students)  # Pass students to show_menu
+    main()  # Pass students to show_menu
