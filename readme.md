@@ -14,14 +14,15 @@ A command-line based student management system in Python.
 - Import students from CSV
 
 ## Project Structure
-- student-control-system/
+```bash
+student-control-system/
 ├── actions.py
 ├── data.py
 ├── main.py
 ├── menu.py
 ├── student.py
 └── students.csv (auto-generated)
-
+```
 ## Requirements
 
 - Python 3.10 or higher
