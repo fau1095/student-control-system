@@ -4,11 +4,8 @@ from typing import List, Dict, Any
 
 # This module handles the menu and user interaction for the student management system.
 
-students: List[Dict[str, Any]] = []
-
-def show_menu():
-    global students
-    students = import_data()
+def show_menu(students: List[Dict[str, Any]]):
+    
     while True:
         print("\nMenu:")
         print("1. Add student")
@@ -32,7 +29,10 @@ def show_menu():
         elif choice == "5":
             export_data(students)
         elif choice == "6":
-            students = import_data()
+            imported = import_data()
+            if imported:
+                students.clear()
+                students.extend(imported)
         elif choice == "0":
             break
         else:
