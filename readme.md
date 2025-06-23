@@ -14,7 +14,7 @@ A command-line based student management system in Python.
 - Import students from CSV
 
 ## Project Structure
-student-control-system/
+- student-control-system/
 ├── actions.py
 ├── data.py
 ├── main.py
