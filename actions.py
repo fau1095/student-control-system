@@ -1,4 +1,7 @@
 # This module provides functions to manage a student database, including adding students, viewing details, and calculating averages.
+from student import Student
+from typing import List
+import re
 
 def validate_grade(prompt):
     while True:
@@ -11,10 +14,10 @@ def validate_grade(prompt):
         except ValueError:
             print("Invalid input. Enter a numeric value.")
 
-def add_student(students):
+def add_student(students: List[Student]):
     while True:
-        name = input("Full name: ")
-        if not name.replace(" ", "").isalpha():
+        name = input("Full name: ").strip()
+        if not re.match(r'^[A-Za-z\s]+$', name):
             print("Invalid name. Please enter only letters.")
         else:
             break
@@ -25,39 +28,37 @@ def add_student(students):
     social = validate_grade("Social Studies grade: ")
     science = validate_grade("Science grade: ")
 
-    student = {
-        "name": name,
-        "section": section,
-        "spanish": spanish,
-        "english": english,
-        "social": social,
-        "science": science,
-        "average": (spanish + english + social + science) / 4
-    }
+    student = Student(name, section, spanish, english, social, science)
     students.append(student)
     print("Student added successfully.")
 
-def view_students(students):
+def view_students(students: List[Student]):
     if not students:
         print("No students found.")
         return
     for i, student in enumerate(students, 1):
         print(f"\nStudent {i}:")
-        for key, value in student.items():
-            print(f"{key.title()}: {value}")
+        print(f"Name: {student.name}")
+        print(f"Section: {student.section}")
+        print(f"Spanish: {student.spanish}")
+        print(f"English: {student.english}")
+        print(f"Social Studies: {student.social}")
+        print(f"Science: {student.science}")
+        print(f"Average: {student.average:.2f}")
+        
 
-def top_students(students):
+def top_students(students: List[Student]):
     if len(students) < 3:
         print("Not enough students to determine top 3.")
         return
-    top = sorted(students, key=lambda x: x["average"], reverse=True)[:3]
+    top = sorted(students, key=lambda x: x.average, reverse=True)[:3]
     for i, student in enumerate(top, 1):
         print(f"\nTop {i}:")
-        print(f"Name: {student['name']}, Average: {student['average']:.2f}")
+        print(f"Name: {student.name}, Average: {student.average:.2f}")
 
-def average_all_students(students):
+def average_all_students(students: List[Student]):
     if not students:
         print("No students to average.")
         return
-    total = sum(s["average"] for s in students)
+    total = sum(s.average for s in students)
     print(f"Overall average: {total / len(students):.2f}")

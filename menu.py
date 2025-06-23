@@ -1,10 +1,11 @@
 from actions import *
 from data import *
-from typing import List, Dict, Any
+from student import Student
+from typing import List
 
 # This module handles the menu and user interaction for the student management system.
 
-def show_menu(students: List[Dict[str, Any]]):
+def show_menu(students: List[Student]):
     
     while True:
         print("\nMenu:")

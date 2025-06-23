@@ -1,8 +1,9 @@
 from menu import show_menu
-from typing import List, Dict, Any
+from student import Student
+from typing import List
 
 def main():
-    students: List[Dict[str, Any]] = []  # Local variable for students
+    students: List[Student] = []  # Local variable for students
     show_menu(students)  # Pass students as argument
 
 if __name__ == "__main__":
